@@ -21,7 +21,7 @@ function Home() {
           loop
           playsInline
           className="video-bg"
-          src="https://www.pexels.com/download/video/30522944/"
+          src="https://video-previews.elements.envatousercontent.com/files/9bf94721-9549-4ab7-a8f5-a1bcdfe884a4/video_preview_h264.mp4"
         />
 
         {/* Left Full-Height Box */}
