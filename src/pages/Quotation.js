@@ -65,7 +65,7 @@ const Quotation = () => {
       }
     } catch (error) {
       console.error(error);
-      setMessage("Error generating quotation");
+      setMessage(error.message || "Error generating quotation");
     } finally {
       setLoading(false);
     }
