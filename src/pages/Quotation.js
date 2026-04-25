@@ -23,12 +23,14 @@ const openPdfFromBase64 = (base64, fileName = "quotation.pdf") => {
 
 const Quotation = () => {
   const [message, setMessage] = useState("");
+  const [modelAlgorithm, setModelAlgorithm] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     setMessage("");
+    setModelAlgorithm("");
 
     const formData = {
       name: event.target.name.value,
@@ -57,6 +59,7 @@ const Quotation = () => {
       }
 
       setMessage(`Estimated Price: $${data.price}`);
+      setModelAlgorithm(data.model_details?.algorithm || "");
 
       if (data.pdf_base64) {
         openPdfFromBase64(data.pdf_base64, data.pdf_file_name);
@@ -66,6 +69,7 @@ const Quotation = () => {
     } catch (error) {
       console.error(error);
       setMessage(error.message || "Error generating quotation");
+      setModelAlgorithm("");
     } finally {
       setLoading(false);
     }
@@ -132,6 +136,9 @@ const Quotation = () => {
         </form>
 
         {message && <p className="success-message">{message}</p>}
+        {modelAlgorithm && (
+          <p className="model-algorithm">model: {modelAlgorithm}</p>
+        )}
       </div>
 
       <Footer />
